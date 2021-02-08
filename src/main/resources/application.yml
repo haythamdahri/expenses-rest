@@ -1,0 +1,9 @@
+spring:
+  ## Application Name
+  application:
+    name: EXPENSES-REST
+  ## Database Configuration
+  datasource:
+    url: mysql:jdbc://localhost:3306/
+    username: engage
+    password: engage_P@s698
