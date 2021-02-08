@@ -4,6 +4,18 @@ spring:
     name: EXPENSES-REST
   ## Database Configuration
   datasource:
-    url: mysql:jdbc://localhost:3306/
-    username: engage
-    password: engage_P@s698
+    url: jdbc:mysql://localhost:3306/ENGAGETECHDB
+    username: root
+    password: toortoor
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+## Vat Config
+vat:
+  percentage: 20
+
+## Jwt Config
+jwt:
+  secret: sDSFjhhJH@__3546466-*/_--@@@888bsdfsdfsdf
