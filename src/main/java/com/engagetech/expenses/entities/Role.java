@@ -11,7 +11,6 @@ import java.util.Set;
 /**
  * @author Haytham DAHRI
  */
-@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "roles")
 @Data
@@ -24,6 +23,7 @@ public class Role extends AbstractEntity {
     private RoleType roleName;
 
     @ManyToMany(mappedBy = "roles")
+    @EqualsAndHashCode.Exclude
     private Set<User> user;
 
 }

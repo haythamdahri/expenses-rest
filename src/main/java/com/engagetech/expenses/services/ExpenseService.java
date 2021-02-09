@@ -1,6 +1,7 @@
 package com.engagetech.expenses.services;
 
 import com.engagetech.expenses.dto.ExpenseDTO;
+import com.engagetech.expenses.dto.ExpenseRequestDTO;
 import com.engagetech.expenses.entities.Expense;
 
 import java.util.List;
@@ -11,6 +12,8 @@ import java.util.List;
 public interface ExpenseService {
 
     Expense saveExpense(Expense expense);
+
+    Expense saveExpense(String username, ExpenseRequestDTO expenseRequest);
 
     void deleteExpense(Long id);
 

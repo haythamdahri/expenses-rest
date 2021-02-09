@@ -19,3 +19,10 @@ vat:
 ## Jwt Config
 jwt:
   secret: sDSFjhhJH@__3546466-*/_--@@@888bsdfsdfsdf
+
+## Currency API Uri
+com:
+  engage:
+    currency:
+      uri: https://api.exchangeratesapi.io
+    allowed-origins: localhost:4200,localhost:3000

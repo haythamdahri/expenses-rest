@@ -32,6 +32,7 @@ public class Expense extends AbstractEntity {
 
     @ManyToOne()
     @JoinColumn(name = "user_id")
+    @EqualsAndHashCode.Exclude
     private User user;
 
 }

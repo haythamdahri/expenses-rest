@@ -38,15 +38,17 @@ public class ApplicationRunnerConfig implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        // Create Initial Roles
-        Role userRole = this.roleRepository.save(new Role(RoleType.USER, null));
-        Role adminRole = this.roleRepository.save(new Role(RoleType.ADMIN, null));
-        // Create Initial User
-        User user = this.userRepository.save(new User("haytham", this.passwordEncoder.encode("toortoor"), null,
-                Set.of(userRole, adminRole)));
-        // Create Initial Expense
-        Expense expense = this.expenseRepository.save(new Expense(new Date(), BigDecimal.valueOf(2500L), "Buy new car",
-                user));
-        log.info("System Initialization Done.");
+        if( this.userRepository.count() == 0 ) {
+            // Create Initial Roles
+            Role userRole = this.roleRepository.save(new Role(RoleType.USER, null));
+            Role adminRole = this.roleRepository.save(new Role(RoleType.ADMIN, null));
+            // Create Initial User
+            User user = this.userRepository.save(new User("haytham", this.passwordEncoder.encode("toortoor"), null,
+                    Set.of(userRole, adminRole)));
+            // Create Initial Expense
+            Expense expense = this.expenseRepository.save(new Expense(new Date(), BigDecimal.valueOf(2500L), "Buy new car",
+                    user));
+            log.info("System Initialization Done.");
+        }
     }
 }

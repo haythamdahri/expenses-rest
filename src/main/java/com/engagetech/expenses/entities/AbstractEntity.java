@@ -8,9 +8,10 @@ import java.sql.Timestamp;
 /**
  * @author Haytham DAHRI
  */
+@Inheritance(strategy = InheritanceType.JOINED)
 @Entity
 @Data
-public class AbstractEntity {
+public abstract class AbstractEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

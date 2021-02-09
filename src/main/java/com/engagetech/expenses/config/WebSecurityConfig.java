@@ -56,16 +56,26 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     /**
      * <p>Configure Spring Security To Ignore Static Content Server Side</p>
      * <p>Mainly used when rendering HTML from server side or while invoking some static content</p>
+     *
      * @param web Web Security Object
      * @throws Exception Thrown Exception When Having Unexpected Error
      */
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/static/**", "/uploads/**", "/images/**");
+        web.ignoring().antMatchers(
+                "/static/**",
+                "/uploads/**",
+                "/images/**",
+                "/webjars/**",
+                "/swagger-resources/**",
+                "/swagger-ui.html",
+                "/v2/api-docs"
+        );
     }
 
     /**
      * <p>Configure Endpoints security, especially to ignore such as those of authentication</p>
+     *
      * @param http Http Security OBject
      * @throws Exception Thrown Exception When Having Unexpected Error
      */
@@ -75,8 +85,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
                 .authorizeRequests()
                 // Allow POST for authentication
-                .antMatchers(HttpMethod.POST, "/api/v1/auth/**"
-                ).permitAll()
+                .antMatchers(HttpMethod.POST, "/api/v1/auth/**").permitAll()
+                .antMatchers("/swagger-ui.html").permitAll()
                 // Allows OPTIONS because it's needed for our project only
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 // All remaining requests must be secured with authentication
@@ -87,4 +97,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // Add a filter to validate the tokens with every request
         http.addFilterBefore(requestFilter, UsernamePasswordAuthenticationFilter.class);
     }
+
 }

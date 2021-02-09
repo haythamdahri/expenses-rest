@@ -2,6 +2,7 @@ package com.engagetech.expenses.services.impl;
 
 import com.engagetech.expenses.dao.UserRepository;
 import com.engagetech.expenses.entities.User;
+import com.engagetech.expenses.exceptions.NotFoundException;
 import com.engagetech.expenses.services.UserService;
 import org.springframework.stereotype.Service;
 
@@ -32,5 +33,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> getUsers() {
         return this.userRepository.findAll();
+    }
+
+    @Override
+    public User getUserByUsername(String username) {
+        return this.userRepository.findByUsername(username).orElseThrow(NotFoundException::new);
     }
 }
