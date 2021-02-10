@@ -26,28 +26,30 @@ public class ApplicationRunnerConfig implements CommandLineRunner {
 
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
-    private final ExpenseRepository expenseRepository;
     private final BCryptPasswordEncoder passwordEncoder;
 
-    public ApplicationRunnerConfig(UserRepository userRepository, RoleRepository roleRepository, ExpenseRepository expenseRepository, BCryptPasswordEncoder passwordEncoder) {
+    public ApplicationRunnerConfig(UserRepository userRepository, RoleRepository roleRepository, BCryptPasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
-        this.expenseRepository = expenseRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     public void run(String... args) throws Exception {
         if( this.userRepository.count() == 0 ) {
+            log.info("INITIALIZING SYSTEM DATA");
             // Create Initial Roles
             Role userRole = this.roleRepository.save(new Role(RoleType.USER, null));
             Role adminRole = this.roleRepository.save(new Role(RoleType.ADMIN, null));
             // Create Initial User
-            User user = this.userRepository.save(new User("haytham", this.passwordEncoder.encode("toortoor"), null,
+            this.userRepository.save(new User("haytham", this.passwordEncoder.encode("haytham123"), null,
                     Set.of(userRole, adminRole)));
-            // Create Initial Expense
-            Expense expense = this.expenseRepository.save(new Expense(new Date(), BigDecimal.valueOf(2500L), "Buy new car",
-                    user));
+            this.userRepository.save(new User("ramzi", this.passwordEncoder.encode("ramzi123"), null,
+                    Set.of(userRole, adminRole)));
+            this.userRepository.save(new User("vedrana", this.passwordEncoder.encode("vedrana123"), null,
+                    Set.of(userRole, adminRole)));
+           this.userRepository.save(new User("jeanmichel", this.passwordEncoder.encode("jeanmichel123"), null,
+                    Set.of(userRole, adminRole)));
             log.info("System Initialization Done.");
         }
     }

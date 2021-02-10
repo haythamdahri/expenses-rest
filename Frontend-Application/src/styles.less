@@ -1,0 +1,96 @@
+* {
+	box-sizing: border-box;
+}
+
+blockquote, body, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, input, li, ol, p, pre, td, textarea, th, ul {
+	margin: 0;
+	padding: 0;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+input,
+textarea {
+	outline: 0;
+    resize: none;
+    border: none;
+    border-radius: 0;
+}
+
+html {
+	font-family: "Open Sans",sans-serif;
+	font-size: 16px;
+	line-height: 1.3;
+	background-color: #e0e2e3;
+}
+
+h2, h3, h4, h5 {
+    font-weight: 300;
+}
+
+h1,
+h2 {
+	margin-bottom: 20px;
+	color: #2E3236;
+}
+
+h2 {
+	font-size: 32px;
+	font-weight: 300;
+}
+
+h3 {
+	margin-bottom: 20px;
+	font-size: 22px;
+    color: #2E3236;
+}
+
+.container {
+	width: 60rem;
+	padding: 3rem 2rem;
+	border-radius: .25rem;
+    background-color: #fff;
+	box-shadow: 0 2px 8px rgba(29,54,58,.12), 0 1px 2px rgba(0,0,0,.06);
+}
+
+button,
+input,
+textarea {
+	font-family: "Avenir W01","Open Sans",sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.3;
+    color: #2E3236;
+}
+
+button {
+	border: 1px solid #AFBB36;
+    border-radius: 5px;
+    padding: 6px 15px;
+    background: 0 0;
+    color: #AFBB36;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    vertical-align: bottom;
+    outline: 0;
+	white-space: nowrap;
+	&.solid {
+		color: #FFF;
+    	background-color: #AFBB36;
+	}
+}
+
+::-webkit-input-placeholder {
+	color: #C5C9CC;
+}
+::-moz-placeholder {
+	color: #C5C9CC;
+	opacity: 1;
+}
+:-ms-input-placeholder {
+	color: #C5C9CC;
+}

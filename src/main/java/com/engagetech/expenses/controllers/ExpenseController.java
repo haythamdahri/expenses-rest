@@ -1,6 +1,5 @@
 package com.engagetech.expenses.controllers;
 
-import com.engagetech.expenses.dto.ExpenseDTO;
 import com.engagetech.expenses.dto.ExpenseRequestDTO;
 import com.engagetech.expenses.dto.VatResponseDTO;
 import com.engagetech.expenses.entities.Expense;
@@ -53,7 +52,7 @@ public class ExpenseController {
     @ApiOperation(value = "Calculate VAT of an amount")
     @GetMapping(path = "/vat")
     public ResponseEntity<VatResponseDTO> calculateExpenseVat(@RequestParam(name = "amount") BigDecimal amount) {
-        return ResponseEntity.ok(new VatResponseDTO(this.vatUtils.calculateAmountWithVat(amount)));
+        return ResponseEntity.ok(new VatResponseDTO(this.vatUtils.getVatAmount(amount)));
     }
 
     /**
@@ -63,7 +62,7 @@ public class ExpenseController {
      */
     @ApiOperation(value = "Retrieve authenticated user expenses with VAT included")
     @GetMapping(path = "/users/current")
-    public ResponseEntity<List<ExpenseDTO>> getAuthenticatedUserExpenses() {
+    public ResponseEntity<List<Expense>> getAuthenticatedUserExpenses() {
         // Get Authenticated Username
         final String username = this.authenticationFacade.getAuthentication().getName();
         // Get Expenses

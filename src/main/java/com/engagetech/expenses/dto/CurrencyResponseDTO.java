@@ -1,6 +1,7 @@
 package com.engagetech.expenses.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,6 +26,7 @@ public class CurrencyResponseDTO implements Serializable {
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date date;
 
-    private Map<String, BigDecimal> rate;
+    @JsonProperty("rates")
+    private Map<String, BigDecimal> rates;
 
 }

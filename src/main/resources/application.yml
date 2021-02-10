@@ -25,4 +25,4 @@ com:
   engage:
     currency:
       uri: https://api.exchangeratesapi.io
-    allowed-origins: localhost:4200,localhost:3000
+    allowed-origins: http://localhost:4200,http://localhost:3000

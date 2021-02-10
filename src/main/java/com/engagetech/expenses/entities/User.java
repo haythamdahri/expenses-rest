@@ -19,7 +19,7 @@ import java.util.Set;
 @AllArgsConstructor
 public class User extends AbstractEntity {
 
-    @Column(name = "username")
+    @Column(name = "username", unique = true)
     private String username;
 
     @Column(name = "password")

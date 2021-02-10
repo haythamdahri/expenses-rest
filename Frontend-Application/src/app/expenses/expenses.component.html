@@ -1,0 +1,49 @@
+<div class="container">
+	<h2>Expenses</h2>
+
+	<button (click)="signOut()"
+		[style]="{backgroundColor: 'red', color: 'white', border: 'none', fontWeight: 'bold', float: 'right'}">Sign out</button>
+
+
+	<h3>Add an expense</h3>
+	<form>
+		<p>
+			<label>Date</label>
+			<input type="text" [(ngModel)]="newExpense.date" name="date" placeholder="dd/mm/yyyy" />
+		</p>
+		<p>
+			<label>Amount</label>
+			<input type="text" (input)="calculateVatAmount()" [(ngModel)]="newExpense.amount" name="amount" placeholder="00.00" />
+		</p>
+		<p>
+			<label>Vat</label>
+			<input type="text" readonly [(ngModel)]="newExpense.vat" name="vat" placeholder="00.00" />
+		</p>
+		<p>
+			<label>Reason</label>
+			<textarea [(ngModel)]="newExpense.reason" name="reason" placeholder="Why oh why?"></textarea>
+		</p>
+		<p class="buttons-row">
+			<button (click)="saveExpense()" class="solid">Save Expense</button>
+			<button (click)="clearExpense()">Cancel</button>
+		</p>
+	</form>
+
+	<section class="expenses-list">
+		<h3>Submitted expenses</h3>
+		<table class="list-table expenses-data">
+			<tr class="list-table-header">
+				<th class="col-4">Date</th>
+				<th class="col-4 figures">Amount (inc. VAT)</th>
+				<th class="col-2 figures">VAT</th>
+				<th class="col-15">Reason</th>
+			</tr>
+			<tr *ngFor="let expense of expenses" class="body-row">
+				<td>{{expense.date | date:'dd MMM yyyy'}}</td>
+				<td class="figures">{{expense.amount | currency:"&pound;"}}</td>
+				<td class="figures">{{expense.vat | currency:"&pound;"}}</td>
+				<td class="reason">{{expense.reason}}</td>
+			</tr>
+		</table>
+	</section>
+</div>

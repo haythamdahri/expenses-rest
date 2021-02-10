@@ -1,5 +1,7 @@
 package com.engagetech.expenses.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -30,9 +32,13 @@ public class Expense extends AbstractEntity {
     @Column(name = "reason", columnDefinition = "TEXT", length = 5600)
     private String reason;
 
+    @Column(name = "vat")
+    private BigDecimal vat;
+
     @ManyToOne()
     @JoinColumn(name = "user_id")
     @EqualsAndHashCode.Exclude
+    @JsonIgnore
     private User user;
 
 }

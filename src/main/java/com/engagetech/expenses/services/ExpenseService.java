@@ -19,6 +19,6 @@ public interface ExpenseService {
 
     List<Expense> getExpenses();
 
-    List<ExpenseDTO> getUserExpenses(String username);
+    List<Expense> getUserExpenses(String username);
 
 }

@@ -1,0 +1,18 @@
+<div class="container">
+	<h2>Authentication</h2>
+
+	<h3>Login</h3>
+	<form>
+		<p>
+			<label>Username</label>
+			<input type="text" [(ngModel)]="authRequest.username" name="username" placeholder="Username" />
+		</p>
+		<p>
+			<label>Password</label>
+			<input type="password" [(ngModel)]="authRequest.password" name="password" placeholder="Password" />
+        </p>
+		<p class="buttons-row">
+			<button (click)="login()" class="solid">Login</button> 
+		</p>
+	</form>
+</div>

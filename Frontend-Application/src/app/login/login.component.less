@@ -1,0 +1,82 @@
+.container {
+	margin: auto;
+}
+
+.expenses-list {
+	margin-top: 10px;
+}
+
+form {
+	@label-width: 150px;
+	font-size: 1rem;
+	p {
+		margin-bottom: 0px;
+		padding: 0 0 20px;
+		overflow: visible;
+	}
+	label {
+		display: inline-block;
+		width: @label-width;
+		margin-right: 12px;
+		margin-bottom: 4px;
+		vertical-align: middle;
+		text-align: right;
+		color: #858B8F;
+	}
+	input {
+		width: 233px;
+		font-size: 16px;
+		padding: 7px;
+		border: none;
+		border-bottom: 1px solid #DDE2E5;
+		outline: 0;
+	}
+	textarea {
+		border: 1px solid #AFBB36;
+		border-radius: 5px;
+		vertical-align: top;
+		padding: 5px;
+		width: 240px;
+		min-height: 100px;
+	}
+	button {
+		margin-right: 1rem;
+	}
+	.buttons-row {
+		margin-left: calc(@label-width + 12px);
+	}
+}
+
+table {
+	width: 100%;
+	border-bottom: 1px solid #dde2e5;
+	tr {
+		border-bottom: 1px solid #dde2e5;
+	}
+	.list-table-header {
+		height: 43px;
+		line-height: 26px;
+		border-bottom: none;
+		background-color: #eceff1;
+	}
+	th {
+		padding: 0 20px 0;
+		text-align: left;
+    	text-transform: uppercase;
+		color: #a6abae;
+		font-size: 12px;
+		font-weight: 300;
+	}
+	td {
+		width: 18%;
+		color: #2E3236;
+		font-weight: 500;
+		line-height: 1.3;
+		font-size: 14px;
+		padding: 10px 20px;
+		vertical-align: top;
+		&.reason {
+			width: 46%;
+		}
+	}
+}

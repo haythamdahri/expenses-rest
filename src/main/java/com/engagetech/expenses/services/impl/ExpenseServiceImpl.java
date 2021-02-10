@@ -14,6 +14,7 @@ import com.engagetech.expenses.utils.VatUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -47,11 +48,14 @@ public class ExpenseServiceImpl implements ExpenseService {
         User user = this.userService.getUserByUsername(username);
         Expense expense = this.expenseMapper.toDto(expenseRequest);
         expense.setUser(user);
+        BigDecimal amount = expenseRequest.getAmount();
         // Check if currency is present to do necessary conversion
-        if (StringUtils.isEmpty(expenseRequest.getCurrency())) {
-            expense.setAmount(this.currencyHelper.convertToPound(expenseRequest.getAmount(),
-                    CurrencyConstants.POUND, expenseRequest.getCurrency()));
+        if (!StringUtils.isEmpty(expenseRequest.getCurrency())) {
+            amount = this.currencyHelper.convertToPound(expenseRequest.getAmount(),
+                    CurrencyConstants.POUND, expenseRequest.getCurrency());
         }
+        expense.setVat(this.vatUtils.getVatAmount(amount));
+        expense.setAmount(this.vatUtils.calculateAmountWithVat(amount));
         return this.expenseRepository.save(expense);
     }
 
@@ -66,10 +70,7 @@ public class ExpenseServiceImpl implements ExpenseService {
     }
 
     @Override
-    public List<ExpenseDTO> getUserExpenses(String username) {
-        return this.expenseRepository.findByUserUsername(username).stream().map(expense ->
-                new ExpenseDTO(expense.getId(), expense.getDate(),
-                        vatUtils.calculateAmountWithVat(expense.getAmount()), expense.getReason())
-        ).collect(Collectors.toList());
+    public List<Expense> getUserExpenses(String username) {
+        return this.expenseRepository.findByUserUsername(username);
     }
 }
