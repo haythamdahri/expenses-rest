@@ -102,11 +102,11 @@ Access the application with host and provide one of the users mentioned above to
 `http://MY_HOST:4200`
 
 - **Login:** 
-  - As a User, I can sign in using my email & password:
+  - As a User, I can sign in using my username & password:
 ![Login](screens/Login.png)
 
 - **Expenses:** 
-  - Expenses Page:
+  - As a system user, i can add expenses with ability to specify currency while typing the amount value:
 ![Expenses](screens/Expenses.png)
 
 ## Author
