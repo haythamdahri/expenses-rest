@@ -22,7 +22,8 @@ Technologies
 How to run
 --------------
 ## Spring Boot Configuration
-```
+```yaml
+## Author: HAYTHAM DAHRI
 spring:
   ## Application Name
   application:
@@ -53,7 +54,7 @@ com:
     ## Please change this based on frontend hostname or IP Address  
     allowed-origins: http://localhost:4200,http://localhost:3000
 ```
-**Init System For Authentication:**
+**Init System Users For Authentication:**
 > **Username: ramzi**
 >
 > **Password: ramzi123**
@@ -72,32 +73,46 @@ com:
 
 
 **Run Unit And Integration Tests:**
-```
+```bash
 mvn clean test
 ```
 
 **Run backend application:**
-```
+```bash
 mvn spring-boot:run
 ```
 
 ## Angular Configuration (`Frontend-Application` folder)
 Set Backend base endpoint `api` in the file `environments/environment.ts`
-```
+```javascript
 export const environment = {
   production: false,
   api: 'http://localhost:8080'
 };
 ```
 Please install packages before running the application:
-```
+```bash
 npm install --save
 ```
 Run the application:
-```
+```bash
 ng serve
 ```
 Access the application with host and provide one of the users mentioned above to login (`INIT SYSTEM USERS`):
 `http://MY_HOST:4200`
 
+- **Login:** 
+  - As a User, I can sign in using my email & password:
+![Login](screens/Login.png)
 
+- **Expenses:** 
+  - Expenses Page:
+![Expenses](screens/Expenses.png)
+
+## Author
+ - HAYTHAM DAHRI
+
+**[Linkedin](https://www.linkedin.com/in/haytham-dahri/)** - **[Github](https://github.com/haythamdahri)** - **[Facebook](https://www.facebook.com/Haytham.dahri)**
+
+***
+Thank you for taking time to read the documentation.
